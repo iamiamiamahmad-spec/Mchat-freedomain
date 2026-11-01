@@ -1,0 +1,20 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy website
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_MY_CHAT_FE03C }}"
+          projectId: my-chat-fe03c
+          channelId: live
